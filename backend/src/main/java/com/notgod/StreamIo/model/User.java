@@ -18,16 +18,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
-    @Column(name = "firstname")
+    @Column(name = "firstName")
     private String firstName;
 
-    @Column(name = "lastname")
+    @Column(name = "lastName")
     private String lastName;
 
-    @Column(name = "fullname")
+    @Column(name = "fullName")
     private String fullName;
 
-    @Column(name = "emailadress")
+    @Column(name = "emailAdress")
     private  String emailAddress;
 
     @Column(name = "subscribed")
@@ -36,7 +36,7 @@ public class User {
     @Column(name = "subscribers")
     private  Set<String> subscribers;
 
-    @Column(name = "videohistory")
+    @Column(name = "videoHstory")
     private List<String> videoHistory;
 
     @Column(name = "liked")

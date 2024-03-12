@@ -22,10 +22,10 @@ public class Comment {
     @Column(name = "authorId")
     private String authorId;
 
-    @Column(name = "likecount")
+    @Column(name = "likeCount")
     private Integer likeCount;
 
-    @Column(name = "dislikecount")
+    @Column(name = "dislikeCount")
     private Integer dislikeCount;
 
     @ManyToOne
