@@ -1,4 +1,4 @@
-package com.notgod.StreamIo;
+package com.notgod.streamIo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

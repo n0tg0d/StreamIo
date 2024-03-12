@@ -1,6 +1,6 @@
-package com.notgod.StreamIo.model;
+package com.notgod.streamIo.model;
 
-import com.notgod.StreamIo.enums.VideoStatus;
+import com.notgod.streamIo.enums.VideoStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.notgod.StreamIo.model;
+package com.notgod.streamIo.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
