@@ -1,6 +1,6 @@
 package com.notgod.streamIo.service;
 
-import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import lombok.RequiredArgsConstructor;
@@ -15,14 +15,13 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class S3Service implements FileService{
+public class S3Service implements FileService {
 
-    private final AmazonS3Client amazonS3Client;
+    private final AmazonS3 amazonS3;
     public static final String bucketName = "streamiobucket";
 
-
     @Override
-    public String uploadFile(MultipartFile file){
+    public String uploadFile(MultipartFile file) {
 
         var filenameExtension = StringUtils.getFilenameExtension(file.getOriginalFilename());
 
@@ -33,18 +32,15 @@ public class S3Service implements FileService{
         metadata.setContentType(file.getContentType());
 
         try {
-            amazonS3Client.putObject(bucketName, key, file.getInputStream(), metadata);
+            amazonS3.putObject(bucketName, key, file.getInputStream(), metadata);
 
-        } catch (IOException ioException){
-            throw  new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
-                    "An Exception occured while uploading the file");
+        } catch (IOException ioException) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
+                    "An Exception occurred while uploading the file", ioException);
         }
 
-        amazonS3Client.setObjectAcl(bucketName, key, CannedAccessControlList.PublicRead);
+        amazonS3.setObjectAcl(bucketName, key, CannedAccessControlList.PublicRead);
 
-        return amazonS3Client.getResourceUrl(bucketName, key);
-
-
-
+        return amazonS3.getUrl(bucketName, key).toString();
     }
 }
